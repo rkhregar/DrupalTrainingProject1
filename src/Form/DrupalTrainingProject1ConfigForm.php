@@ -22,7 +22,7 @@ class DrupalTrainingProject1ConfigForm extends ConfigFormBase {
    */
   public function getEditableConfigNames() : array {
     return [
-      'DrupalTrainingProject1.settings',
+      'drupal_training_project1.settings',
     ];
   }
 
@@ -30,7 +30,7 @@ class DrupalTrainingProject1ConfigForm extends ConfigFormBase {
    * {@inheritDoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('DrupalTrainingProject1.settings');
+    $config = $this->config('drupal_training_project1.settings');
     $form = parent::buildForm($form, $form_state);
 
     $form['name'] = [
@@ -47,7 +47,7 @@ class DrupalTrainingProject1ConfigForm extends ConfigFormBase {
    * Form Submit.
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $config = $this->config('DrupalTrainingProject1.settings');
+    $config = $this->config('drupal_training_project1.settings');
     $config->set('name', $form_state->getValue('name'));
     $config->save();
     parent::submitForm($form, $form_state);
