@@ -1,0 +1,9 @@
+drupal_training_projec1.config_form:
+  path: /admin/config/drupal-training-config-form
+  defaults:
+    _form: \Drupal\drupal_training_project1\Form\DrupalTrainingProject1ConfigForm
+    _title: Drupal Training Config Form
+  requirements:
+    _permission: 'administrator'
+  options:
+    _admin_route: TRUE

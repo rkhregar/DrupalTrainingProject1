@@ -1,0 +1,5 @@
+name: 'DrupalTrainingProject1'
+type: module
+description: 'Module for drupal training excersize'
+package: Custom
+core_version_requirement: ^10
