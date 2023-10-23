@@ -1,0 +1,4 @@
+administer_drupal_training_project1_configuration:
+  title: 'Administer Drupal Training Project'
+  description: 'Users who have this permission can submit simple form'
+  restrict access: TRUE

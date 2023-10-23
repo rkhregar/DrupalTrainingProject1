@@ -7,3 +7,11 @@ drupal_training_projec1.config_form:
     _permission: 'administer content'
   options:
     _admin_route: TRUE
+
+drupal_training_project1.simple_form:
+  path: /dt41/simple-form
+  defaults:
+    _form: \Drupal\drupal_training_project1\Form\DT41SimpleForm
+    _title: Simple Form
+  requirements:
+    _permission: 'administer_drupal_training_project1_configuration'
