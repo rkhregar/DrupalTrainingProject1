@@ -1,1 +1,4 @@
-name: rakesh
+country: 'India'
+city: 'Kolkata'
+api_key: ''
+api_endpoint: 'https://api.openweathermap.org/data/2.5/weather'

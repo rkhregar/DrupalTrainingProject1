@@ -31,16 +31,40 @@ class DrupalTrainingProject1ConfigForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = $this->config('drupal_training_project1.settings');
-    $form = parent::buildForm($form, $form_state);
 
-    $form['name'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Name'),
-      '#title_display' => 'before',
-      '#default_value' => $config->get('name'),
+    $form = [
+      'country' => [
+        '#type' => 'textfield',
+        '#title' => $this->t('Country'),
+        '#title_display' => 'before',
+        '#default_value' => $config->get('country') ?? 'India',
+      ],
+
+      'city' => [
+        '#type' => 'textfield',
+        '#title' => $this->t('City'),
+        '#title_display' => 'before',
+        '#default_value' => $config->get('city') ?? 'Kolkata',
+      ],
+
+      'api_key' => [
+        '#type' => 'textfield',
+        '#title' => $this->t('API KEy'),
+        '#title_display' => 'before',
+        '#default_value' => $config->get('api_key'),
+        '#placeholder' => 'API Key',
+        '#description' => $this->t('You can generate key from ') . '<a href="https://openweathermap.org/api"> Open Weather </a>',
+      ],
+
+      'api_endpoint' => [
+        '#type' => 'textfield',
+        '#title' => $this->t('API Endpoint'),
+        '#title_display' => 'before',
+        '#default_value' => $config->get('api_endpoint') ?? 'https://api.openweathermap.org/data/2.5/weather',
+      ],
     ];
+    return parent::buildForm($form, $form_state);
 
-    return $form;
   }
 
   /**
@@ -48,7 +72,10 @@ class DrupalTrainingProject1ConfigForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('drupal_training_project1.settings');
-    $config->set('name', $form_state->getValue('name'));
+    $variable = $form_state->getValues();
+    foreach ($variable as $key => $value) {
+      $config->set($key, $value);
+    }
     $config->save();
     parent::submitForm($form, $form_state);
   }

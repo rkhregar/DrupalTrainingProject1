@@ -4,6 +4,6 @@ drupal_training_projec1.config_form:
     _form: \Drupal\drupal_training_project1\Form\DrupalTrainingProject1ConfigForm
     _title: Drupal Training Config Form
   requirements:
-    _permission: 'administrator'
+    _permission: 'administer content'
   options:
     _admin_route: TRUE
