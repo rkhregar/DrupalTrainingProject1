@@ -4,3 +4,36 @@
  * @file
  * Primary module hooks for DrupalTrainingProject1 module.
  */
+
+use Drupal\Core\Form\FormStateInterface;
+
+ /**
+ * Implements hook_form_alter().
+ */
+
+ function drupal_training_project1_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+    if ($form_id == 'user_register_form' || $form_id == 'user_form') {
+        $form['full_name'] = [
+          '#type' => 'textfield',
+          '#title' => t('Full name'),
+          '#title_display' => 'before',
+          '#required' => TRUE,
+          '#pattern' => '[a-zA-Z ]*',
+        ];
+        $form['#validate'][] = 'drupal_teaining_project1_user_form_validation';
+    }
+ }
+
+
+ function drupal_teaining_project1_user_form_validation(&$form, FormStateInterface $form_state) {
+    $form_id = $form_state->getValue('form_id');
+    if ($form_id == 'user_register_form' || $form_id == 'user_form') {
+        $full_name = $form_state->getValue('full_name');
+        if (!empty($full_name)) {
+            $full_name = explode(' ', $full_name, 2);
+            $form_state->setValue('field_first_name', [['value' => $full_name[0] ?? '']]);
+            $form_state->setValue('field_last_name', [[ 'value' => $full_name[1] ?? '']]);
+        }
+    }
+ }
